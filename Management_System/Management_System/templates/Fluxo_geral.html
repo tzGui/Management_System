@@ -1,0 +1,53 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M-System Login</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand">Management System</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-primary">Buscar</button>
+          </form>
+        </div>
+    </nav>
+<main>
+    <!--Eae meus pit entt seguinte essa parte toda da tabela eu peguei de outro programa que já tinha feito tem toda uma logica 
+    que devemos aplicar de forma semelhante no minimo entt vamos por partes-->
+    <table class="table">
+        <!--isso aqui são os itens da tabela não vou mudar os nomes agora por que acho q tem chance de perder um pouco da logica 
+        enfim itens da tabela no caso desse programa mantem a # e vamos colocar: ID, tecnico, cliente, finalizado em, e o tipo de operação-->
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Título</th>
+            <th scope="col">Criado em</th>
+            <th scope="col">Data de entrega</th>
+            <th scope="col">Finalizado em</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <!--aqui começa um looping de fileiras na tabela onde entra em repetição para que se mostre as informações não sei se expliquei direito mas enfim-->
+            {% for todo in todo_list %}
+                <tr>
+                    <th scope="row">{{todo.pk}}</th>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.created_at}}</td>
+                    <td>{{todo.deadline}}</td>
+                    <td>{{todo.finished_at|default:'-Não finalizado-'}}</td>
+                    <td>
+                        <a href="{% url "todo_complete" pk=todo.pk %}" class="btn btn-primary btn-sm {% if todo.finished_at %}disabled{% endif %}">Concluir</a>
+                        <a href="{% url "todo_update" pk=todo.pk %}" class="btn btn-secondary btn-sm {% if todo.finished_at %}disabled{% endif %}">Editar</a>
+                        <a href="{% url "todo_delete" pk=todo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                 </tr>  
+            {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
