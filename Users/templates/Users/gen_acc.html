@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block tittle %}Managemnt-System{% endblock tittle %}
+{% block content %}
+    <main>
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Adicionar contas </h5>
+                  <p class="card-text">Adicione novos ou exclua usuarios com acesso ao sistema.</p>
+                  <a href="#" class="btn btn-primary">Adicionar Usuário</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Exclusão de contas</h5>
+                  <p class="card-text">Exclua conta de pessoas que não necessitam mais do acesso ao Sistema.</p>
+                  <a href="#" class="btn btn-primary">Exclusão de Usuário</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+    {% endblock content %}

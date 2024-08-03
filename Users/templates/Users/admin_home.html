@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block tittle %}Managemnt-System{% endblock tittle %}
+{% block content %}
+    <main>
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Gerenciamento de contas</h5>
+                  <p class="card-text">Adicione novos ou exclua usuarios com acesso ao sistema.</p>
+                  <a href="{% url "gerenciar_contas" %}" class="btn btn-primary">Gerencias usuários</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Fluxo de Roteadores</h5>
+                  <p class="card-text">Veja o fluxo completo de roteadores e operações.</p>
+                  <a href="#" class="btn btn-primary">Visualizar fluxo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+{% endblock content %}
+    
