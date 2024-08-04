@@ -6,5 +6,4 @@ class UsersConfig(AppConfig):
     name = 'Users'
 
     def ready(self):
-        # Remova a importação de signals se não for necessário
         pass

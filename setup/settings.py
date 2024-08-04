@@ -1,22 +1,15 @@
-# settings.py
-
 from pathlib import Path
 from decouple import config, Csv
 from dj_database_url import parse as db_url
 
-# Diretório base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Chave secreta do Django
 SECRET_KEY = config("SECRET_KEY")
 
-# Modo de depuração
 DEBUG = config("DEBUG", cast=bool, default=False)
 
-# Hosts permitidos
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=["localhost"])
 
-# Aplicações instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,7 +20,6 @@ INSTALLED_APPS = [
     "Users.apps.UsersConfig",
 ]
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -38,14 +30,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Definindo o URLConf principal do projeto
-ROOT_URLCONF = 'setup.urls'  # Certifique-se de que este caminho esteja correto
+ROOT_URLCONF = 'setup.urls' 
 
-# Configuração dos templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Ajuste conforme necessário
+        'DIRS': [BASE_DIR / 'templates'],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -58,17 +48,14 @@ TEMPLATES = [
     },
 ]
 
-# WSGI application
 WSGI_APPLICATION = 'setup.wsgi.application'
 
-# Configurações do banco de dados
 DATABASES = {
     "default": config(
         "DATABASE_URL", default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}", cast=db_url
     )
 }
 
-# Validação de senhas
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -84,19 +71,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Configurações de internacionalização
+
 LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "America/Sao_Paulo"
 USE_I18N = True
 USE_TZ = True
 
-# Arquivos estáticos
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# Arquivos de mídia
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Tipo de campo primário padrão
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

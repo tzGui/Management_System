@@ -70,7 +70,7 @@ def tec_home(request):
 
 @login_required(login_url="/auth/login/")
 def admin_user_list(request):
-    if not request.user.is_superuser:  # Verifica se o usuário é administrador
+    if not request.user.is_superuser:  
         return HttpResponseForbidden()
     users = User.objects.all()
     return render(request, 'Users/User_list.html', {'users': users})
